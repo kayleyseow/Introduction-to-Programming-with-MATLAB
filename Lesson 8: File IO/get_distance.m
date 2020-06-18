@@ -3,7 +3,8 @@
 %Write a function called get_distance that accepts two character vector inputs representing the names of two cities. The function returns the distance between them as an output argument called distance. For example, the call get_distance('Seattle, WA','Miami, FL') should return 3723. If one or both of the specified cities are not in the file, the function returns -1.
 function distance = get_distance(x,y)
     [~,~,raw] = xlsread('Distances.xlsx');
-    p = 0; q = 0;
+    p = 0; 
+    q = 0;
     name_1 = strcmpi(x,raw(:,1));
     p = find(name_1 == 1);
     name_2 = strcmpi(y,raw(1,:));
@@ -11,6 +12,6 @@ function distance = get_distance(x,y)
     if isempty(p)==1 || isempty(q)==1
         distance=-1;
     else
-        distance= all{p,q};
+        distance= raw{p,q};
     end
 end
